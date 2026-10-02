@@ -6,6 +6,8 @@ A single-page "Daily Motivation" app in `index.html`. It shows a random motivati
 
 - Shows a random quote when the page loads.
 - The **New Quote** button picks another quote. It never repeats the one currently on screen.
+- The **Copy** button copies the current quote to the clipboard.
+- The **Share** button opens a new tab with a pre-filled tweet of the current quote.
 - Ships with eight quotes from Steve Jobs, Nelson Mandela, Sam Levenson, Theodore Roosevelt, Mark Twain, William James, Aristotle and Wayne Gretzky.
 - Responsive layout: the card is up to 560px wide and shrinks to fit small screens.
 - Everything (HTML, CSS and JavaScript) is in one file, with no dependencies or build step.

@@ -33,6 +33,7 @@
     <div class="actions">
       <button id="new">New Quote</button>
       <button id="copy" class="secondary">Copy</button>
+      <button id="share" class="secondary">Share</button>
     </div>
   </div>
   <script>
@@ -76,6 +77,10 @@
       copyTimer = setTimeout(() => { copyBtn.textContent = "Copy"; }, 1500);
     }
     copyBtn.addEventListener("click", copyQuote);
+    document.getElementById("share").addEventListener("click", () => {
+      const text = encodeURIComponent(`"${quotes[last][0]}" — ${quotes[last][1]}`);
+      window.open(`https://twitter.com/intent/tweet?text=${text}`, "_blank", "noopener");
+    });
     show();
   </script>
 </body>
