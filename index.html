@@ -6,9 +6,8 @@
   <title>Daily Motivation</title>
   <style>
     body {
-      margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; box-sizing: border-box;
       font-family: Georgia, serif; background: linear-gradient(135deg, #0f0c29, #1a1a2e); padding: 16px;
-      box-sizing: border-box;
     }
     .card {
       background: #1e1e2f; max-width: 560px; width: 100%; padding: 40px; border-radius: 12px; position: relative;
@@ -27,6 +26,7 @@
     .light .card { background: #fff; border-color: #ddd8fb; box-shadow: 0 10px 30px rgba(0,0,0,.12); }
     .light body { background: linear-gradient(135deg, #e0e7ff, #f5f3ff); } .light blockquote { color: #1e1e2f; }
     .light cite { color: #5b5b7a; } .light button.secondary { color: #5b4fd6; } .light button.secondary:hover { background: #ece9ff; }
+    @media (max-width: 480px) { .card { padding: 52px 20px 32px; } blockquote { font-size: 1.85rem; } cite, button { font-size: 1.15rem; } }
   </style>
 </head>
 <body>
