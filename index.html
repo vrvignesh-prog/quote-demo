@@ -24,10 +24,15 @@
     .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
     button.secondary { background: transparent; color: #c9c2ff; border: 1px solid #8b7cf6; }
     button.secondary:hover { background: #2a2a44; }
+    .card { position: relative; } #theme { position: absolute; top: 12px; right: 12px; padding: 6px 10px; }
+    .light .card { background: #fff; border-color: #ddd8fb; box-shadow: 0 10px 30px rgba(0,0,0,.12); }
+    .light blockquote { color: #1e1e2f; } .light cite { color: #5b5b7a; } .light button.secondary { color: #5b4fd6; }
+    .light body { background: linear-gradient(135deg, #e0e7ff, #f5f3ff); } .light button.secondary:hover { background: #ece9ff; }
   </style>
 </head>
 <body>
   <div class="card">
+    <button id="theme" class="secondary"></button>
     <blockquote id="quote"></blockquote>
     <cite id="author"></cite>
     <div class="actions">
@@ -81,6 +86,14 @@
       const text = encodeURIComponent(`"${quotes[last][0]}" — ${quotes[last][1]}`);
       window.open(`https://twitter.com/intent/tweet?text=${text}`, "_blank", "noopener");
     });
+    const themeBtn = document.getElementById("theme");
+    function setTheme(light, save) {
+      document.documentElement.classList.toggle("light", light);
+      themeBtn.textContent = light ? "☾" : "☀"; themeBtn.ariaLabel = `Switch to ${light ? "dark" : "light"} mode`;
+      if (save) try { localStorage.setItem("theme", light ? "light" : "dark"); } catch {}
+    }
+    try { setTheme(localStorage.getItem("theme") === "light"); } catch { setTheme(false); }
+    themeBtn.addEventListener("click", () => setTheme(!document.documentElement.classList.contains("light"), true));
     show();
   </script>
 </body>
