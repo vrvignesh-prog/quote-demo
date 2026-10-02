@@ -6,12 +6,12 @@
   <title>Daily Motivation</title>
   <style>
     body {
-      margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; box-sizing: border-box;
+      margin: 0; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; box-sizing: border-box;
       font-family: Georgia, serif; background: linear-gradient(135deg, #0f0c29, #1a1a2e); padding: 16px;
     }
     .card {
       background: #1e1e2f; max-width: 560px; width: 100%; padding: 40px; border-radius: 12px; position: relative;
-      box-shadow: 0 10px 30px rgba(0,0,0,.6); text-align: center; border: 1px solid #2e2e48;
+      box-shadow: 0 10px 30px rgba(0,0,0,.6); text-align: center; border: 1px solid #2e2e48; box-sizing: border-box;
     }
     blockquote { font-size: 1.5rem; line-height: 1.4; margin: 0 0 16px; color: #e8e8f0; }
     cite { display: block; color: #9a9ab8; margin-bottom: 28px; font-style: normal; }
@@ -26,6 +26,7 @@
     .light .card { background: #fff; border-color: #ddd8fb; box-shadow: 0 10px 30px rgba(0,0,0,.12); }
     .light body { background: linear-gradient(135deg, #e0e7ff, #f5f3ff); } .light blockquote { color: #1e1e2f; }
     .light cite { color: #5b5b7a; } .light button.secondary { color: #5b4fd6; } .light button.secondary:hover { background: #ece9ff; }
+    footer { margin-top: 20px; color: #9a9ab8; font-size: .9rem; } footer a { color: #c9c2ff; } .light footer { color: #5b5b7a; } .light footer a { color: #5b4fd6; }
     @media (max-width: 480px) { .card { padding: 52px 20px 32px; } blockquote { font-size: 1.85rem; } cite, button { font-size: 1.15rem; } }
   </style>
 </head>
@@ -40,6 +41,7 @@
       <button id="share" class="secondary">Share</button>
     </div>
   </div>
+  <footer><a href="https://github.com/vrvignesh-prog/quote-demo" target="_blank" rel="noopener">View on GitHub</a></footer>
   <script>
     const quotes = [
       ["The only way to do great work is to love what you do.", "Steve Jobs"],
@@ -60,9 +62,7 @@
       document.getElementById("author").textContent = `— ${quotes[i][1]}`;
     }
     document.getElementById("new").addEventListener("click", show);
-
-    const copyBtn = document.getElementById("copy");
-    let copyTimer;
+    const copyBtn = document.getElementById("copy"); let copyTimer;
     async function copyQuote() {
       const text = `${quotes[last][0]} — ${quotes[last][1]}`;
       try {
