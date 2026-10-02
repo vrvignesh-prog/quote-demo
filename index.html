@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Daily Motivation</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%238b7cf6'/><text x='32' y='88' font-family='Georgia,serif' font-size='104' font-weight='bold' text-anchor='middle' fill='white'>&#8220;</text></svg>">
   <style>
     body {
       margin: 0; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; box-sizing: border-box;
@@ -55,8 +56,7 @@
     ];
     let last = -1;
     function show() {
-      let i;
-      do { i = Math.floor(Math.random() * quotes.length); } while (i === last);
+      let i; do { i = Math.floor(Math.random() * quotes.length); } while (i === last);
       last = i;
       document.getElementById("quote").textContent = `"${quotes[i][0]}"`;
       document.getElementById("author").textContent = `— ${quotes[i][1]}`;

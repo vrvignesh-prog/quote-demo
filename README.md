@@ -10,6 +10,7 @@ A single-page "Daily Motivation" app in `index.html`. It shows a random motivati
 - The **Share** button opens a new tab with a pre-filled tweet of the current quote.
 - A toggle in the card's top-right corner switches between dark (the default) and light mode. The choice is saved in `localStorage` and restored on the next visit.
 - A footer below the card links to this project's GitHub repository.
+- A favicon (a white quote mark on a purple square) is embedded in the page as an inline SVG, so no extra image file is needed.
 - Ships with eight quotes from Steve Jobs, Nelson Mandela, Sam Levenson, Theodore Roosevelt, Mark Twain, William James, Aristotle and Wayne Gretzky.
 - Responsive layout: the card is up to 560px wide and shrinks to fit small screens. On screens 480px wide or less, the quote, author and buttons use larger text.
 - Everything (HTML, CSS and JavaScript) is in one file, with no dependencies or build step.
