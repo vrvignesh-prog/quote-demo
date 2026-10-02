@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Motivation</title>
+  <style>
+    body {
+      margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      font-family: Georgia, serif; background: linear-gradient(135deg, #0f0c29, #1a1a2e); padding: 16px;
+      box-sizing: border-box;
+    }
+    .card {
+      background: #1e1e2f; max-width: 560px; width: 100%; padding: 40px; border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.6); text-align: center; border: 1px solid #2e2e48;
+    }
+    blockquote { font-size: 1.5rem; line-height: 1.4; margin: 0 0 16px; color: #e8e8f0; }
+    cite { display: block; color: #9a9ab8; margin-bottom: 28px; font-style: normal; }
+    button {
+      background: #8b7cf6; color: #fff; border: none; padding: 12px 28px; font-size: 1rem;
+      border-radius: 6px; cursor: pointer;
+    }
+    button:hover { background: #a294ff; }
+    .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    button.secondary { background: transparent; color: #c9c2ff; border: 1px solid #8b7cf6; }
+    button.secondary:hover { background: #2a2a44; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <blockquote id="quote"></blockquote>
+    <cite id="author"></cite>
+    <div class="actions">
+      <button id="new">New Quote</button>
+      <button id="copy" class="secondary">Copy</button>
+    </div>
+  </div>
+  <script>
+    const quotes = [
+      ["The only way to do great work is to love what you do.", "Steve Jobs"],
+      ["It always seems impossible until it's done.", "Nelson Mandela"],
+      ["Don't watch the clock; do what it does. Keep going.", "Sam Levenson"],
+      ["Believe you can and you're halfway there.", "Theodore Roosevelt"],
+      ["The secret of getting ahead is getting started.", "Mark Twain"],
+      ["Act as if what you do makes a difference. It does.", "William James"],
+      ["Quality is not an act, it is a habit.", "Aristotle"],
+      ["You miss 100% of the shots you don't take.", "Wayne Gretzky"]
+    ];
+    let last = -1;
+    function show() {
+      let i;
+      do { i = Math.floor(Math.random() * quotes.length); } while (i === last);
+      last = i;
+      document.getElementById("quote").textContent = `"${quotes[i][0]}"`;
+      document.getElementById("author").textContent = `— ${quotes[i][1]}`;
+    }
+    document.getElementById("new").addEventListener("click", show);
+
+    const copyBtn = document.getElementById("copy");
+    let copyTimer;
+    async function copyQuote() {
+      const text = `${quotes[last][0]} — ${quotes[last][1]}`;
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch {
+        // Fallback for browsers/contexts without the async Clipboard API
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        ta.remove();
+      }
+      copyBtn.textContent = "Copied!";
+      clearTimeout(copyTimer);
+      copyTimer = setTimeout(() => { copyBtn.textContent = "Copy"; }, 1500);
+    }
+    copyBtn.addEventListener("click", copyQuote);
+    show();
+  </script>
+</body>
+</html>
